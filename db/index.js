@@ -7,6 +7,6 @@ mongoose.model('User',new Schema({
     email:String})
 );
 
-global.Module = function(modelName){
+global.Model = function(modelName){
     return mongoose.model(modelName);
 };

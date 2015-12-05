@@ -1,6 +1,6 @@
 <% include ../include/head %>
 <div class="container">
-    <form id="defaultForm" novalidate="novalidate" class="form-horizontal bv-form" action="/reg" method="post">
+    <form id="defaultForm" novalidate="novalidate" class="form-horizontal bv-form" action="/users/login" method="post">
         <div class="form-group">
             <label class="col-lg-3 control-label">Username</label>
             <div class="col-lg-5">
@@ -25,7 +25,8 @@
 
 <script>
     $(document).ready(function() {
-        $('#defaultForm').bootstrapValidator({
+        var oForm = $('#defaultForm');
+        oForm.bootstrapValidator({
             message: 'This value is not valid',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -58,14 +59,15 @@
             }
         }).on('success.form.bv',function(e){
             e.preventDefault();
+            console.log(oForm.attr('action'));
             $.ajax({
-                url: '/reg',
+                url: oForm.attr('action'),
                 type: 'post',
-                data: $("#defaultForm").serialize(),
+                data: oForm.serialize(),
                 dataType: 'json',
                 success: function (json) {
                     if (json.status == 0) {
-                        return window.location.href = '/login';
+                        return window.location.href = '/';
                     } else {
                         alert(json.msg);
                     }

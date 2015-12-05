@@ -39,7 +39,8 @@
 
 <script>
     $(document).ready(function() {
-        $('#defaultForm').bootstrapValidator({
+        var oForm = $('#defaultForm');
+        oForm.bootstrapValidator({
             message: 'This value is not valid',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -101,9 +102,9 @@
         }).on('success.form.bv',function(e){
             e.preventDefault();
             $.ajax({
-                url: '/users/reg',
+                url: oForm.attr('action'),
                 type: 'post',
-                data: $("#defaultForm").serialize(),
+                data: oForm.serialize(),
                 dataType: 'json',
                 success: function (json) {
                     if (json.status == 0) {
