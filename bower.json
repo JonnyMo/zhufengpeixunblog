@@ -1,0 +1,25 @@
+{
+  "name": "zhufengpeixunblog",
+  "description": "",
+  "main": "",
+  "authors": [
+    "'JonnyMo' <'mo0928@163.com'>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "mo-blog"
+  ],
+  "homepage": "https://github.com/JonnyMo/zhufengpeixunblog",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "bootstrapvalidator": "~0.5.3"
+  }
+}
