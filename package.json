@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "preinstall": "node-waf clean || true; node-waf configure build"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -14,6 +15,7 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "express-session": "^1.12.1",
+    "mongoose": "^4.2.10",
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
     "serve-favicon": "~2.3.0"
