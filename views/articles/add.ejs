@@ -1,1 +1,34 @@
-add
+<% include ../include/head %>
+<div class="container">
+    <form id="defaultForm" novalidate class="form-horizontal bv-form" action="/articles/add" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<%=article._id%>">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">文章标题</label>
+            <div class="col-lg-8">
+                <input type="text" value="<%=article.title%>" class="form-control" name="title" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">文章内容</label>
+            <div class="col-lg-8">
+                <textarea class="form-control" name="content" rows="3"><%=article.content%></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputFile" class="col-lg-3 control-label">图片</label>
+            <div class="col-lg-8">
+                <%if(article.poster){%>
+                    <img src="<%=article.poster%>" alt="" />
+                <%}%>
+                <input type="file" name="poster" id="exampleInputFile" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-9 col-lg-offset-3">
+                <button type="submit" class="btn btn-primary" name="signup" value="提交">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<% include ../include/foot %>

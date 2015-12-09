@@ -1,3 +1,52 @@
 <% include ./include/head %>
-这是首页呢
+
+<%for(var i= 0, len = articles.length; i<len; i++){
+    var article = articles[i];
+%>
+    <div class="media container">
+        <div class="media-left">
+            <a href="##">
+                <img class="media-object" src="<%=article.poster%>" alt="没有图片" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">
+                <a href="/articles/detail?id=<%=article._id%>"><%=article.title%></a>
+            </h4>
+            <p><%=article.content.substring(0, 100);%></p>
+        </div>
+    </div>
+<%}%>
+<%if(len == 0 && keyword == ''){%>
+<div class="jumbotron container">
+    <h1>暂时没有人发表文章</h1>
+</div>
+<%}else if(len == 0 && keyword != ''){%>
+<div class="container">
+    <h1>没搜索到含有关键字 <span class="text-warning"><%=keyword%></span> 的文章</h1>
+</div>
+<%}%>
+<%if(len != 0){%>
+<nav class="container">
+    <ul class="pagination">
+        <%if(pageObj.pageNum != 1){%>
+            <li>
+                <a href="/articles/list/<%=pageObj.pageNum-1%>/<%=pageObj.pageSize%>?keyword=<%=keyword%>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        <%}%>
+        <%for(i = pageObj.start; i<=pageObj.end; i++){%>
+            <li class="<%= (i == pageObj.pageNum ? 'active' :'') %>"><a href="/articles/list/<%=i%>/<%=pageObj.pageSize%>?keyword=<%=keyword%>"><%=i%></a></li>
+        <%}%>
+        <%if(pageObj.pageNum != pageObj.totalPage){%>
+            <li>
+                <a href="/articles/list/<%=pageObj.pageNum +1%>/<%=pageObj.pageSize%>?keyword=<%=keyword%>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        <%}%>
+    </ul>
+</nav>
+<%}%>
 <% include ./include/foot %>

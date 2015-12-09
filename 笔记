@@ -1,0 +1,20 @@
+ng-app
+
+ng-init="name='Tom', age=12"
+
+根作用域：RootScope
+RootScope.name='Tom';
+RootScope.age = 12
+
+ng-model="name",指向RootScope.name
+
+ng-bind="name" 解析后显示内容
+div ng-bind="name"></div>
+
+
+$scope.$apply()
+
+template:"<div>{{person.name}}</div>"
+link:function(scope, element, attr){
+
+}

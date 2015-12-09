@@ -1,0 +1,17 @@
+<% include ../include/head %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><%=article.title%></h3>
+    </div>
+    <div class="panel-body">
+        <%=article.content%>
+        <p>
+            <img src="<%=article.poster%>" alt="">
+        </p>
+    </div>
+    <p class="panel-footer">
+        <a href="/articles/add?id=<%=article._id%>" class="btn btn-primary">编辑</a>
+        <a href="/articles/delete?id=<%=article._id%>" class="btn btn-primary">删除</a>
+    </p>
+</div>
+<% include ../include/foot %>
